@@ -1,0 +1,7 @@
+__MACOSX
+.DS_Store
+certbot
+.git
+.gitignore
+*.md
+init-letsencrypt.sh

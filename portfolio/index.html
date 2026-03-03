@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Shamantha Rai — Dean Academics · Researcher · Author</title>
+<meta name="description" content="Academic portfolio of Dr. Shamantha Rai — PhD (IIIT Allahabad), Dean Academics at Sahyadri College of Engineering & Management, Mangaluru. Researcher in Wireless Sensor Networks, AI, and Stochastic Mathematics.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ═══════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+   ═══════════════════════════════════════ */
+:root {
+  --bg-primary: #0A0A14;
+  --bg-secondary: #0D0D0D;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.05);
+  --accent-gold: #C9A84C;
+  --accent-gold-dim: rgba(201, 168, 76, 0.2);
+  --accent-gold-glow: rgba(201, 168, 76, 0.15);
+  --accent-slate: #6B7FA3;
+  --accent-slate-dim: rgba(107, 127, 163, 0.4);
+  --text-heading: #FFFFFF;
+  --text-body: #F5F0E8;
+  --text-muted: #9A978F;
+  --text-dim: #6B6860;
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-fill: rgba(255, 255, 255, 0.03);
+  --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'DM Sans', system-ui, sans-serif;
+  --font-accent: 'EB Garamond', Georgia, serif;
+  --font-stats: 'Space Grotesk', monospace;
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --border-radius: 12px;
+  --section-padding: clamp(80px, 10vw, 140px);
+  --container-width: 1200px;
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) var(--bg-secondary);
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+html::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: 4px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+  line-height: 1.7;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Custom cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 24px; height: 24px;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+.cursor-dot.hovering {
+  width: 12px; height: 12px;
+  background: rgba(201, 168, 76, 0.8);
+}
+.cursor-ring.hovering {
+  width: 40px; height: 40px;
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════ */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.section-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--accent-gold);
+  margin: 0 auto 60px;
+  transform: scaleX(0);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 400;
+  color: var(--text-heading);
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+.gold-text {
+  color: var(--accent-gold);
+}
+
+.glass-card {
+  background: var(--glass-fill);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.12);
+  border-color: rgba(201, 168, 76, 0.2);
+}
+
+.placeholder-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--accent-gold);
+  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(107, 127, 163, 0.05));
+  color: var(--text-dim);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--accent-gold);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  margin: 3px 4px 3px 0;
+}
+
+.tag--blue {
+  background: rgba(107, 127, 163, 0.1);
+  color: var(--accent-slate);
+  border-color: rgba(107, 127, 163, 0.15);
+}
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  transition: color 0.3s, filter 0.3s;
+}
+a:hover {
+  filter: brightness(1.15);
+}
+
+section {
+  position: relative;
+  padding: var(--section-padding) 0;
+}
+
+/* ═══════════════════════════════════════
+   [1] NAVIGATION BAR
+   ═══════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background 0.5s var(--ease-smooth), padding 0.4s var(--ease-smooth), backdrop-filter 0.5s;
+}
+.navbar.scrolled {
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--text-heading);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.navbar-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent-gold);
+  transition: width 0.3s var(--ease-smooth);
+}
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: var(--accent-gold);
+}
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+.orcid-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a6ce39;
+  font-size: 13px;
+  font-weight: 500;
+}
+.orcid-badge svg {
+  width: 18px; height: 18px;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none; border: none;
+  padding: 4px;
+  z-index: 1002;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 1.5px;
+  background: var(--text-body);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* Mobile overlay nav */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 10, 20, 0.97);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.5s var(--ease-smooth);
+}
+.mobile-nav-overlay.open {
+  clip-path: inset(0 0 0 0);
+}
+.mobile-nav-list {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.mobile-nav-list a {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--text-body);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+.mobile-nav-list a:hover {
+  color: var(--accent-gold);
+}
+
+@media (max-width: 1024px) {
+  .navbar-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ═══════════════════════════════════════
+   [2] HERO SECTION
+   ═══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+.hero-bg-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0.05;
+  z-index: 0;
+}
+.hero .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-overline {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+}
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400;
+  color: var(--text-heading);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  white-space: nowrap;
+}
+.hero-name .letter {
+  display: inline-block;
+  opacity: 0;
+}
+.hero-degree {
+  font-family: var(--font-accent);
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--accent-slate);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.5vw, 17px);
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  border: none;
+}
+.btn-gold {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+}
+.btn-gold:hover {
+  background: #d4b558;
+  filter: brightness(1.1);
+  color: var(--bg-primary);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+}
+.btn-ghost:hover {
+  background: rgba(201, 168, 76, 0.08);
+}
+.hero-social {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.hero-social a {
+  color: var(--text-dim);
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+}
+.hero-social a:hover {
+  color: var(--accent-gold);
+}
+.hero-social svg, .hero-social i {
+  width: 20px; height: 20px;
+}
+
+/* Hero Right Column */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hero-photo-wrapper {
+  position: relative;
+  width: clamp(260px, 22vw, 340px);
+  height: clamp(260px, 22vw, 340px);
+}
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 0 0 8px rgba(107, 127, 163, 0.15);
+}
+.hero-photo-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%; height: 110%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.08), transparent 70%);
+  z-index: -1;
+}
+
+/* Floating badges */
+.hero-badges {
+  position: absolute;
+  width: 130%; height: 130%;
+  top: -15%; left: -15%;
+  pointer-events: none;
+}
+.hero-badge {
+  position: absolute;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-family: var(--font-stats);
+  font-size: 12px;
+  color: var(--text-body);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  pointer-events: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.hero-badge .badge-num {
+  color: var(--accent-gold);
+  font-weight: 600;
+  font-size: 14px;
+}
+.hero-badge:nth-child(1) { top: 4%; left: 8%; }
+.hero-badge:nth-child(2) { top: 18%; right: -8%; }
+.hero-badge:nth-child(3) { bottom: 18%; right: -6%; }
+.hero-badge:nth-child(4) { bottom: 6%; left: 10%; }
+.hero-badge:nth-child(5) { bottom: 38%; left: -12%; }
+
+@media (max-width: 768px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-tagline { margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-social { justify-content: center; }
+  .hero-right { order: -1; margin-bottom: 20px; }
+  .hero-photo-wrapper { width: 200px; height: 200px; }
+  .hero-badge { font-size: 10px; padding: 8px 12px; }
+  .hero-badge:nth-child(1) { top: -15px; left: 10%; }
+  .hero-badge:nth-child(2) { top: 10%; right: -10px; }
+  .hero-badge:nth-child(3) { bottom: 10%; right: -10px; }
+  .hero-badge:nth-child(4) { bottom: -15px; left: 10%; }
+  .hero-badge:nth-child(5) { top: 45%; left: -15px; }
+}
+
+/* ═══════════════════════════════════════
+   [3] ABOUT SECTION
+   ═══════════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.about-quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--text-heading);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent-gold);
+  align-self: center;
+}
+.about-bio p {
+  margin-bottom: 20px;
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.85;
+}
+.philosophy-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.philosophy-card {
+  padding: 28px 20px;
+  text-align: center;
+}
+.philosophy-card .icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+.philosophy-card h4 {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--text-heading);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 30px; }
+  .philosophy-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ═══════════════════════════════════════
+   [4] RESEARCH / EXPERTISE
+   ═══════════════════════════════════════ */
+.constellation-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 70px;
+  aspect-ratio: 1/0.75;
+}
+.constellation-svg {
+  width: 100%;
+  height: 100%;
+}
+.constellation-node {
+  cursor: pointer;
+  transition: filter 0.4s;
+}
+.constellation-node:hover {
+  filter: brightness(1.15);
+}
+.constellation-node text {
+  font-family: var(--font-body);
+  fill: var(--text-body);
+  font-size: 11px;
+  font-weight: 500;
+}
+.constellation-node circle {
+  transition: r 0.3s, fill 0.3s;
+}
+.competency-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.competency-col h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.competency-col ul {
+  list-style: none;
+}
+.competency-col li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-body);
+}
+.competency-col li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-size: 10px;
+  top: 3px;
+}
+
+@media (max-width: 768px) {
+  .competency-grid { grid-template-columns: 1fr; gap: 30px; }
+  .constellation-wrapper { aspect-ratio: 1/1; }
+}
+
+/* ═══════════════════════════════════════
+   [5] PUBLICATIONS
+   ═══════════════════════════════════════ */
+.publications-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.publications-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-gold), transparent);
+}
+.pub-year-marker {
+  font-family: var(--font-stats);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+  position: relative;
+  letter-spacing: 0.06em;
+}
+.pub-year-marker::before {
+  content: '';
+  position: absolute;
+  left: -44px; top: 50%;
+  transform: translateY(-50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+.pub-card {
+  margin-bottom: 30px;
+  padding: 28px 32px;
+  padding-right: 100px;
+  border-left: 3px solid var(--accent-gold);
+  position: relative;
+}
+.pub-card .pub-journal {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-slate);
+  margin-bottom: 8px;
+}
+.pub-card .pub-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--text-heading);
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.pub-card .pub-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.pub-card .pub-meta span {
+  margin-right: 12px;
+}
+.pub-card .pub-contributors {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+.pub-card .pub-tags {
+  margin-bottom: 12px;
+}
+.pub-card .pub-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.03em;
+}
+.pub-card .pub-thumb {
+  width: 60px; height: 60px;
+  position: absolute;
+  top: 28px; right: 28px;
+  font-size: 9px;
+}
+.orcid-section-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+  padding: 16px 28px;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  width: fit-content;
+  margin-left: auto; margin-right: auto;
+  font-size: 14px;
+  color: var(--text-body);
+}
+.orcid-section-badge svg {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .pub-card .pub-thumb { display: none; }
+  .pub-card { padding: 20px; }
+  .publications-timeline { padding-left: 30px; }
+}
+
+/* ═══════════════════════════════════════
+   [6] BOOKS SECTION
+   ═══════════════════════════════════════ */
+.books-section {
+  position: relative;
+}
+.books-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ctext x='20' y='40' font-family='serif' font-size='14' fill='%23C9A84C' opacity='0.3' transform='rotate(-15)'%3E∫∑∏∂ε√∞≈≠≤≥ΔΩπ%3C/text%3E%3Ctext x='60' y='100' font-family='serif' font-size='12' fill='%23C9A84C' opacity='0.2' transform='rotate(-15)'%3EP(X|Y) = P(Y|X)P(X)/P(Y)%3C/text%3E%3Ctext x='30' y='160' font-family='serif' font-size='13' fill='%23C9A84C' opacity='0.25' transform='rotate(-15)'%3EE[X] = ∫xf(x)dx%3C/text%3E%3Ctext x='80' y='220' font-family='serif' font-size='11' fill='%23C9A84C' opacity='0.2' transform='rotate(-15)'%3EH(s,a) + ∇V(s)%3C/text%3E%3Ctext x='10' y='290' font-family='serif' font-size='14' fill='%23C9A84C' opacity='0.3' transform='rotate(-15)'%3Eλ∇²ψ = Eψ%3C/text%3E%3Ctext x='100' y='350' font-family='serif' font-size='12' fill='%23C9A84C' opacity='0.2' transform='rotate(-15)'%3Eσ² = E[(X-μ)²]%3C/text%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.books-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.book-card {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.03), rgba(10, 10, 20, 0.8));
+  position: relative;
+}
+.book-card-inner {
+  padding: 32px;
+}
+.book-cover {
+  width: 100%;
+  aspect-ratio: 6/9;
+  margin-bottom: 24px;
+  font-size: 14px;
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(107, 127, 163, 0.06));
+}
+.book-badge-series {
+  position: absolute;
+  top: 24px; left: 24px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(180, 90, 50, 0.8);
+  color: #fff;
+}
+.book-badge-year {
+  position: absolute;
+  top: 24px; right: 24px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--font-stats);
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+.book-title {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.5vw, 24px);
+  color: var(--text-heading);
+  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.book-publisher {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.book-tags {
+  margin-bottom: 16px;
+}
+.book-desc {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.book-cta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .books-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   [7] EXPERIENCE SECTION
+   ═══════════════════════════════════════ */
+.exp-timeline {
+  position: relative;
+  padding: 0;
+}
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--accent-gold), var(--accent-gold), transparent);
+  border-style: dashed;
+}
+.exp-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  margin-bottom: 50px;
+  align-items: start;
+}
+.exp-item:nth-child(even) .exp-content { grid-column: 3; text-align: left; }
+.exp-item:nth-child(even) .exp-spacer { grid-column: 1; }
+.exp-item:nth-child(odd) .exp-content { grid-column: 1; text-align: right; }
+.exp-item:nth-child(odd) .exp-spacer { grid-column: 3; }
+.exp-dot {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+.exp-dot span {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 2px var(--accent-gold);
+}
+.exp-content {
+  padding: 24px 28px;
+}
+.exp-year {
+  font-family: var(--font-stats);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+.exp-role {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.exp-org {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-slate);
+  margin-bottom: 6px;
+}
+.exp-duration {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  background: rgba(201, 168, 76, 0.08);
+  color: var(--accent-gold);
+  font-family: var(--font-stats);
+  margin-bottom: 12px;
+}
+.exp-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+.exp-logo {
+  width: 48px; height: 48px;
+  margin-bottom: 12px;
+  font-size: 8px;
+  display: inline-flex;
+}
+.exp-content[style*="text-align: right"] .exp-logo,
+.exp-item:nth-child(odd) .exp-logo {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .exp-timeline::before { left: 20px; }
+  .exp-item {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto;
+  }
+  .exp-dot { grid-column: 1; }
+  .exp-item:nth-child(even) .exp-content,
+  .exp-item:nth-child(odd) .exp-content {
+    grid-column: 2;
+    text-align: left;
+  }
+  .exp-item:nth-child(even) .exp-spacer,
+  .exp-item:nth-child(odd) .exp-spacer { display: none; }
+  .exp-item:nth-child(odd) .exp-logo { margin-left: 0; }
+}
+
+/* ═══════════════════════════════════════
+   [8] EDUCATION SECTION
+   ═══════════════════════════════════════ */
+.edu-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.edu-card {
+  padding: 36px 28px;
+  text-align: center;
+  border: 1px solid rgba(201, 168, 76, 0.1);
+}
+.edu-logo {
+  width: 64px; height: 64px;
+  border-radius: 12px;
+  margin: 0 auto 20px;
+  font-size: 9px;
+}
+.edu-degree {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+.edu-field {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.edu-institution {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-body);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.edu-year {
+  font-family: var(--font-stats);
+  font-size: 13px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+.edu-grade {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.edu-quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .edu-cards { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   [9] ACCOLADES
+   ═══════════════════════════════════════ */
+.accolades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 70px;
+}
+.accolade-card {
+  padding: 32px 24px;
+  text-align: center;
+}
+.accolade-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+.accolade-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.accolade-body {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.accolade-year {
+  font-family: var(--font-stats);
+  font-size: 12px;
+  color: var(--accent-gold);
+}
+.stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 40px 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+.stat-item {
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--font-stats);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 1024px) {
+  .accolades-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-ribbon { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+}
+@media (max-width: 768px) {
+  .accolades-grid { grid-template-columns: 1fr; }
+  .stats-ribbon { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ═══════════════════════════════════════
+   [10] CONTRIBUTIONS & AFFILIATIONS
+   ═══════════════════════════════════════ */
+.contributions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+.contributions-col h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--text-heading);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.contributions-col ul {
+  list-style: none;
+}
+.contributions-col li {
+  position: relative;
+  padding: 14px 0 14px 28px;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+.contributions-col li::before {
+  content: '◆';
+  position: absolute;
+  left: 0; top: 14px;
+  color: var(--accent-gold);
+  font-size: 8px;
+}
+.contributions-col li .contrib-note {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .contributions-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* ═══════════════════════════════════════
+   [11] CONTACT SECTION
+   ═══════════════════════════════════════ */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+.contact-card {
+  padding: 28px 24px;
+  text-align: center;
+}
+.contact-card .cc-icon {
+  font-size: 24px;
+  margin-bottom: 14px;
+  display: block;
+}
+.contact-card .cc-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.contact-card .cc-value {
+  font-size: 14px;
+  color: var(--text-body);
+  word-break: break-all;
+}
+.contact-form {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239A978F' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-group select option {
+  background: var(--bg-primary);
+  color: var(--text-body);
+}
+.form-submit {
+  text-align: center;
+}
+.form-submit .btn {
+  min-width: 200px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .contact-cards { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   [12] FOOTER
+   ═══════════════════════════════════════ */
+.footer {
+  padding: 40px 0 30px;
+  border-top: 1px solid var(--glass-border);
+  text-align: center;
+}
+.footer-main {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--accent-gold);
+}
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════
+   REVEAL ANIMATIONS (initial states)
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.reveal-ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   INTRO OVERLAY
+   ═══════════════════════════════════════ */
+.intro-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--bg-primary);
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro-name {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 56px);
+  color: var(--text-heading);
+  letter-spacing: 0.06em;
+  font-weight: 400;
+}
+.intro-name .intro-letter {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+}
+</style>
+</head>
+<body>
+
+<!-- Intro Overlay -->
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-name" id="introName"></div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ═══════════════════════════════════════
+     [1] NAVIGATION BAR
+     ═══════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#hero" class="navbar-logo">Dr. Shamantha Rai</a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#accolades">Accolades</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <a href="https://orcid.org/0000-0001-5824-361X" target="_blank" rel="noopener" class="orcid-badge" title="ORCID Profile">
+          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#a6ce39" d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM78.6 56.8c-5.7 0-10.3 4.6-10.3 10.3s4.6 10.3 10.3 10.3 10.3-4.6 10.3-10.3-4.6-10.3-10.3-10.3zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148.7 93h-24.4v79.4z"/></svg>
+        </a>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNav">
+  <ul class="mobile-nav-list">
+    <li><a href="#about" class="mobile-nav-link">About</a></li>
+    <li><a href="#research" class="mobile-nav-link">Research</a></li>
+    <li><a href="#publications" class="mobile-nav-link">Publications</a></li>
+    <li><a href="#books" class="mobile-nav-link">Books</a></li>
+    <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+    <li><a href="#education" class="mobile-nav-link">Education</a></li>
+    <li><a href="#accolades" class="mobile-nav-link">Accolades</a></li>
+    <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════
+     [2] HERO SECTION
+     ═══════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero-bg-canvas" id="heroCanvas"></canvas>
+  <div class="container">
+    <div class="hero-left">
+      <p class="hero-overline reveal">Dean Academics · Researcher · Author</p>
+      <h1 class="hero-name" id="heroName">Dr. Shamantha Rai</h1>
+      <p class="hero-degree reveal">Ph.D. Information Technology · IIIT Allahabad</p>
+      <p class="hero-tagline reveal">Bridging the architecture of intelligent systems with the timeless craft of pedagogy — two decades at the intersection of wireless networks, artificial intelligence, and institutional leadership.</p>
+      <div class="hero-ctas reveal">
+        <a href="#research" class="btn btn-gold">View Research <span style="margin-left:4px">↓</span></a>
+      </div>
+      <div class="hero-social reveal">
+        <a href="https://orcid.org/0000-0001-5824-361X" target="_blank" rel="noopener" title="ORCID">
+          <svg width="20" height="20" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#a6ce39" d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM78.6 56.8c-5.7 0-10.3 4.6-10.3 10.3s4.6 10.3 10.3 10.3 10.3-4.6 10.3-10.3-4.6-10.3-10.3-10.3zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43-39.7h-24.4v79.4z"/></svg>
+        </a>
+        <!-- SYNTHETIC: Replace with actual LinkedIn URL -->
+        <a href="https://linkedin.com/in/shamanth-rai" target="_blank" rel="noopener" title="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrapper">
+        <div class="hero-photo-glow"></div>
+        <img src="images/profile.jpg" alt="Dr. Shamantha Rai" class="hero-photo" style="border-radius:50%; object-fit:cover;">
+        <div class="hero-badges">
+          <div class="hero-badge"><span class="badge-num" data-count="15">0</span>+ Years in Academia</div>
+          <div class="hero-badge"><span class="badge-num" data-count="2">0</span> Authored Books</div>
+          <div class="hero-badge"><span class="badge-num" data-count="13">0</span>+ Research Publications</div>
+          <div class="hero-badge">PhD · IIIT Allahabad</div>
+          <div class="hero-badge"><span class="badge-num" data-count="2000">0</span>+ Students Mentored</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [3] ABOUT SECTION
+     ═══════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">The Scholar's Path</h2>
+    <div class="section-subtitle reveal">&nbsp;</div>
+
+    <div class="about-grid">
+      <div class="about-quote reveal">
+        "Knowledge is not merely accumulated — it is architected, transmitted, and transformed."
+      </div>
+      <div class="about-bio">
+        <p class="reveal">Dr. Shamantha Rai's academic journey originates from the engineering corridors of P A College of Engineering, Mangalore, where a Bachelor of Engineering in Computer Science first ignited a lasting passion for systems thinking. That early foundation matured into deep research at the Indian Institute of Information Technology, Allahabad — one of India's premier technology institutions — where he earned both his M.Tech and a Doctorate of Philosophy in Information Technology, with a dissertation that advanced the science of localization in Wireless Sensor Networks through the elegant lens of rigid graph theory.</p>
+        <p class="reveal">Yet to see Dr. Rai solely through the lens of research would be to miss the fuller portrait. He is equally an institution builder — a leader who has served as Department Head, Associate Professor, and now Dean Academics at Sahyadri College of Engineering &amp; Management, Mangaluru. His career has been a deliberate oscillation between the laboratory and the boardroom, between publishing in IEEE-indexed journals and architecting curriculum for the next generation of engineers.</p>
+        <p class="reveal">In his current role, Dr. Rai shapes the academic vision of one of coastal Karnataka's most respected engineering institutions, while simultaneously advancing research in Artificial Intelligence, NLP, and Stochastic Mathematics — and authoring books that seek to make the complex beautiful and the uncertain, navigable.</p>
+      </div>
+    </div>
+
+    <div class="philosophy-cards">
+      <div class="philosophy-card glass-card reveal">
+        <span class="icon">🔬</span>
+        <h4>Research-First Pedagogy</h4>
+      </div>
+      <div class="philosophy-card glass-card reveal">
+        <span class="icon">🌐</span>
+        <h4>Networked Intelligence</h4>
+      </div>
+      <div class="philosophy-card glass-card reveal">
+        <span class="icon">📚</span>
+        <h4>Knowledge Architecture</h4>
+      </div>
+      <div class="philosophy-card glass-card reveal">
+        <span class="icon">🎓</span>
+        <h4>Institutional Leadership</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [4] RESEARCH AREAS & EXPERTISE
+     ═══════════════════════════════════════ -->
+<section id="research">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Domains of Inquiry</h2>
+    <div class="section-subtitle reveal">&nbsp;</div>
+
+    <div class="constellation-wrapper reveal">
+      <svg class="constellation-svg" id="constellationSvg" viewBox="0 0 700 525"></svg>
+    </div>
+
+    <div class="competency-grid">
+      <div class="competency-col reveal">
+        <h3>Technical</h3>
+        <ul>
+          <li>WSN Localization &amp; Deployment</li>
+          <li>Graph Theory &amp; Rigid Graphs</li>
+          <li>Machine Learning &amp; NLP</li>
+          <li>Network Protocols &amp; Architecture</li>
+          <li>Stochastic Processes</li>
+        </ul>
+      </div>
+      <div class="competency-col reveal">
+        <h3>Academic</h3>
+        <ul>
+          <li>Curriculum Development &amp; Design</li>
+          <li>Research Mentorship</li>
+          <li>Institutional Governance</li>
+          <li>IEEE Publication Track Record</li>
+          <li>Doctoral &amp; Post-Graduate Supervision</li>
+        </ul>
+      </div>
+      <div class="competency-col reveal">
+        <h3>Leadership</h3>
+        <ul>
+          <li>COO-Level Strategic Management</li>
+          <li>Department Head Administration</li>
+          <li>Agile PMO &amp; Project Governance</li>
+          <li>NBA / NAAC Accreditation</li>
+          <li>Faculty Development Initiatives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [5] PUBLICATIONS & RESEARCH PAPERS
+     ═══════════════════════════════════════ -->
+<section id="publications">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Scholarly Contributions</h2>
+    <p class="section-subtitle reveal">Peer-reviewed work across IEEE, SCI/E-indexed journals and international conferences</p>
+
+    <div class="publications-timeline">
+
+      <!-- 2025 -->
+      <div class="pub-year-marker reveal">2025</div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Springer" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">International Journal of System Assurance Engineering and Management (Springer)</div>
+        <div class="pub-title">Graph Data Science-Driven Framework to Aid Auditory and Speech Impaired Individuals by Accelerating Sign Image Analysis and Knowledge Relegation Through Deep Learning</div>
+        <div class="pub-meta">
+          <span>2025</span>
+          <span>Cited by 4</span>
+        </div>
+        <div class="pub-contributors">R. Akhila Thejaswi · B.S. Rai · P.G.R. Pakkala</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">Deep Learning</span>
+          <span class="tag--blue tag">Graph Data Science</span>
+          <span class="tag--blue tag">Sign Language</span>
+        </div>
+        <a href="https://link.springer.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <!-- 2024 -->
+      <div class="pub-year-marker reveal">2024</div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Springer" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">Journal of Ambient Intelligence and Humanized Computing (Springer)</div>
+        <div class="pub-title">Quality of Information Analysis in WSN: An Application in BASN</div>
+        <div class="pub-meta">
+          <span>2024</span>
+          <span>Cited by 6</span>
+        </div>
+        <div class="pub-contributors">S. Rai Bellipady · S.M. Shetty · H. Airbail</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">WSN</span>
+          <span class="tag--blue tag">Body Area Sensor Networks</span>
+        </div>
+        <a href="https://link.springer.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Springer" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">International Journal of Information Technology (Springer)</div>
+        <div class="pub-title">Road Safety Analysis Framework Based on Vehicle Vibrations and Sounds Using Deep Learning Techniques</div>
+        <div class="pub-meta">
+          <span>2024</span>
+        </div>
+        <div class="pub-contributors">P.G.R. Pakkala · R. Akhila Thejaswi · B.S. Rai</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">Deep Learning</span>
+          <span class="tag--blue tag">Road Safety</span>
+        </div>
+        <a href="https://link.springer.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <!-- 2023 -->
+      <div class="pub-year-marker reveal">2023</div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Inderscience" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">International Journal of Medical Engineering and Informatics (Inderscience)</div>
+        <div class="pub-title">Early Knowledge-Driven Prognostic Reasoning Model Using Effective Data Analytics Approach</div>
+        <div class="pub-meta">
+          <span>2023</span>
+          <span>Cited by 3</span>
+        </div>
+        <div class="pub-contributors">S.R. Bellipady · S. Rai · T. Rai</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">Data Analytics</span>
+          <span class="tag--blue tag">Diabetes Research</span>
+        </div>
+        <a href="https://www.inderscienceonline.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/ieee-logo.png" alt="IEEE" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">IEEE International Conference (2023)</div>
+        <div class="pub-title">Detection and Localization of Lung Nodules by Accelerating Multi-Dimensional Images Using Graph Data Science</div>
+        <div class="pub-meta">
+          <span>2023</span>
+          <span>Cited by 1</span>
+        </div>
+        <div class="pub-contributors">B.S. Rai · P.G.R. Pakkala · N. Bhat</div>
+        <div class="pub-tags">
+          <span class="tag">Conference Paper</span>
+          <span class="tag--blue tag">Graph Data Science</span>
+          <span class="tag--blue tag">Medical Imaging</span>
+        </div>
+        <a href="https://ieeexplore.ieee.org" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/ieee-logo.png" alt="IEEE" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">IEEE International Conference (2023)</div>
+        <div class="pub-title">Intelligent Framework for Early Prediction of Type–II Diabetes by Accelerating Palm Print Images Using Graph Data Science</div>
+        <div class="pub-meta">
+          <span>2023</span>
+          <span>Cited by 2</span>
+        </div>
+        <div class="pub-contributors">B.S. Rai · P.G.R. Pakkala · K. Desai</div>
+        <div class="pub-tags">
+          <span class="tag">Conference Paper</span>
+          <span class="tag--blue tag">Graph Data Science</span>
+          <span class="tag--blue tag">Diabetes Prediction</span>
+        </div>
+        <a href="https://ieeexplore.ieee.org" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/ieee-logo.png" alt="IEEE" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">IEEE International Conference (2023)</div>
+        <div class="pub-title">Intelligent Framework for Auditory and Speech Impaired Individuals by Accelerating Sign Image Analysis Using Graph Data Science</div>
+        <div class="pub-meta">
+          <span>2023</span>
+        </div>
+        <div class="pub-contributors">B.S. Rai · P.G.R. Pakkala · P.P. Alva</div>
+        <div class="pub-tags">
+          <span class="tag">Conference Paper</span>
+          <span class="tag--blue tag">Graph Data Science</span>
+          <span class="tag--blue tag">Accessibility</span>
+        </div>
+        <a href="https://ieeexplore.ieee.org" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <!-- 2022 -->
+      <div class="pub-year-marker reveal">2022</div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="IGI Global" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">International Journal of Software Science and Computational Intelligence (IGI Global)</div>
+        <div class="pub-title">A Formal Statistical Data Modeling for Knowledge Discovery and Prognostic Reasoning of Arecanut Crop Using Data Analytics</div>
+        <div class="pub-meta">
+          <span>2022</span>
+          <span>Cited by 6</span>
+        </div>
+        <div class="pub-contributors">R.P.P. Guthu · S.R. Bellipady</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">Data Analytics</span>
+          <span class="tag--blue tag">Agriculture</span>
+        </div>
+        <a href="https://www.igi-global.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <!-- 2021 -->
+      <div class="pub-year-marker reveal">2021</div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/jpam-logo.png" alt="JPAM" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">Journal of Pure and Applied Microbiology</div>
+        <div class="pub-title">The Potential Role of Vitamin B12 in the Prevention of COVID-19 Complications: A Narrative Review</div>
+        <div class="pub-meta">
+          <span>December 2021</span>
+          <span>DOI: 10.22207/JPAM.15.4.04</span>
+        </div>
+        <div class="pub-contributors">Srinidhi Rai · Sindhu · Prajna · B. Shamantha Rai · P. Rithesh Pakkala</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">Biomedical Research</span>
+          <span class="tag--blue tag">COVID-19</span>
+        </div>
+        <a href="https://doi.org/10.22207/JPAM.15.4.04" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Springer" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">Wireless Personal Communications (Springer)</div>
+        <div class="pub-title">Text Refinement Powered by Artificial Intelligence for Tourism</div>
+        <div class="pub-meta">
+          <span>September 2021</span>
+          <span>DOI: 10.1007/s11277-021-08510-3</span>
+        </div>
+        <div class="pub-contributors">Prakhyath Rai · Shamantha Rai</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">AI/NLP</span>
+          <span class="tag--blue tag">Tourism Tech</span>
+        </div>
+        <a href="https://doi.org/10.1007/s11277-021-08510-3" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="IGI Global" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">Handbook of Research on Machine Learning (IGI Global)</div>
+        <div class="pub-title">Impact of Syntactical and Statistical Pattern Recognition on Prognostic Reasoning</div>
+        <div class="pub-meta">
+          <span>2021</span>
+          <span>Cited by 7</span>
+        </div>
+        <div class="pub-contributors">R. Pakkala · P. Rai · S.R. Bellipady</div>
+        <div class="pub-tags">
+          <span class="tag">Book Chapter</span>
+          <span class="tag--blue tag">Pattern Recognition</span>
+          <span class="tag--blue tag">Machine Learning</span>
+        </div>
+        <a href="https://www.igi-global.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <!-- 2017 -->
+      <div class="pub-year-marker reveal">2017</div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Springer" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">Wireless Personal Communications (Springer)</div>
+        <div class="pub-title">Localization in Wireless Sensor Networks Using Rigid Graphs: A Review</div>
+        <div class="pub-meta">
+          <span>October 2017</span>
+          <span>DOI: 10.1007/s11277-017-4397-7</span>
+        </div>
+        <div class="pub-contributors">Shamantha Rai · Shirshu Varma</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">WSN</span>
+          <span class="tag--blue tag">Graph Theory</span>
+        </div>
+        <a href="https://doi.org/10.1007/s11277-017-4397-7" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+      <div class="pub-card glass-card reveal">
+        <img src="images/springer-logo.png" alt="Springer" class="pub-thumb" style="object-fit:contain;">
+        <div class="pub-journal">Wireless Personal Communications (Springer)</div>
+        <div class="pub-title">A 3-D Radio Irregularity Model (3DRIM) for Wireless Sensor Network</div>
+        <div class="pub-meta">
+          <span>2017</span>
+        </div>
+        <div class="pub-contributors">N. Anand · S.R. Bellipady · R. Ranjan · S. Varma</div>
+        <div class="pub-tags">
+          <span class="tag">Journal Article</span>
+          <span class="tag--blue tag">WSN</span>
+          <span class="tag--blue tag">Radio Propagation</span>
+        </div>
+        <a href="https://link.springer.com" target="_blank" rel="noopener" class="pub-link">View Paper →</a>
+      </div>
+
+    </div>
+
+    <div class="orcid-section-badge reveal">
+      <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#a6ce39" d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM78.6 56.8c-5.7 0-10.3 4.6-10.3 10.3s4.6 10.3 10.3 10.3 10.3-4.6 10.3-10.3-4.6-10.3-10.3-10.3zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43-39.7h-24.4v79.4z"/></svg>
+      <a href="https://orcid.org/0000-0001-5824-361X" target="_blank" rel="noopener">Full profile at ORCID iD 0000-0001-5824-361X</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [6] BOOKS SECTION
+     ═══════════════════════════════════════ -->
+<section class="books-section" id="books">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Authored Works</h2>
+    <p class="section-subtitle reveal">Where rigorous mathematics meets narrative clarity</p>
+
+    <div class="books-grid">
+      <!-- Book 1 -->
+      <div class="book-card glass-card reveal">
+        <div class="book-card-inner">
+          <span class="book-badge-series">Book</span>
+          <span class="book-badge-year">2026</span>
+          <img src="images/book1-cover.jpg" alt="Stochastic Minds" class="book-cover" style="object-fit:cover; border-radius:12px; width:100%;">
+          <h3 class="book-title">Stochastic Minds: Math, Models, and the Beautiful Chaos of Getting It Almost Right — Volume I</h3>
+          <div class="book-publisher">Grid Genesis · Stochastic Minds Series</div>
+          <div class="book-tags">
+            <span class="tag">Stochastic Mathematics</span>
+            <span class="tag">Probability</span>
+            <span class="tag">Mathematical Modeling</span>
+          </div>
+          <p class="book-desc">A rigorous yet accessible exploration of probabilistic thinking and stochastic processes — tracing the mathematical underpinnings of randomness from foundational models to real-world approximations where precision meets beautiful uncertainty.</p>
+          <!-- SYNTHETIC: Replace with actual book link -->
+          <a href="#" class="book-cta">Read Book →</a>
+        </div>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="book-card glass-card reveal">
+        <div class="book-card-inner">
+          <span class="book-badge-series">Book</span>
+          <span class="book-badge-year">2026</span>
+          <img src="images/book2-cover.jpg" alt="Stochastic Futures" class="book-cover" style="object-fit:cover; border-radius:12px; width:100%;">
+          <h3 class="book-title">Stochastic Futures: Agents, AGI, and the Mathematics of Control — Volume II</h3>
+          <div class="book-publisher">Grid Genesis · Stochastic Futures Series</div>
+          <div class="book-tags">
+            <span class="tag">Artificial Intelligence</span>
+            <span class="tag">AGI</span>
+            <span class="tag">Control Theory</span>
+          </div>
+          <p class="book-desc">The second volume extends the stochastic framework into the frontier of agentic AI and autonomous systems — interrogating the Hamilton-Jacobi-Bellman equations and causal reasoning structures that underpin next-generation AGI architectures.</p>
+          <!-- SYNTHETIC: Replace with actual book link -->
+          <a href="#" class="book-cta">Read Book →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [7] EXPERIENCE SECTION
+     ═══════════════════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Professional Trajectory</h2>
+    <p class="section-subtitle reveal">From classroom to C-suite — a journey through academia and industry</p>
+
+    <div class="exp-timeline">
+
+      <!-- 1. COO - Sahynex -->
+      <div class="exp-item reveal">
+        <div class="exp-content glass-card">
+          <img src="images/sahynex-logo.png" alt="Sahynex" class="exp-logo" style="border-radius:8px; object-fit:contain; width:72px; height:72px;">
+          <div class="exp-year">Aug 2025 – Present</div>
+          <div class="exp-role">Chief Operating Officer</div>
+          <div class="exp-org">Sahynex · Full-time</div>
+          <div class="exp-duration">8 mos</div>
+          <p class="exp-desc">Executive leadership overseeing operational strategy and technology ventures at Sahynex, driving cross-functional alignment across engineering and academic initiatives.</p>
+        </div>
+        <div class="exp-dot"><span></span></div>
+        <div class="exp-spacer"></div>
+      </div>
+
+      <!-- 2. Senior PM - Quantiphi -->
+      <div class="exp-item reveal">
+        <div class="exp-spacer"></div>
+        <div class="exp-dot"><span></span></div>
+        <div class="exp-content glass-card">
+          <img src="images/quantiphi-logo.png" alt="Quantiphi" class="exp-logo" style="border-radius:8px; object-fit:contain;">
+          <div class="exp-year">Jul 2022 – Oct 2025</div>
+          <div class="exp-role">Senior Project Manager</div>
+          <div class="exp-org">Quantiphi · Bengaluru, Karnataka</div>
+          <div class="exp-duration">3 yrs 4 mos</div>
+          <p class="exp-desc">Led complex enterprise AI/ML delivery programs at Quantiphi, one of India's premier data science organizations, driving multi-stakeholder program governance with Agile rigor.</p>
+          <div style="margin-top:10px"><span class="tag">Agile Methodologies</span><span class="tag">Complex Project Management</span></div>
+        </div>
+      </div>
+
+      <!-- 3. Associate Prof & Head - Sahyadri -->
+      <div class="exp-item reveal">
+        <div class="exp-content glass-card">
+          <img src="images/sahyadri-logo.png" alt="Sahyadri" class="exp-logo" style="border-radius:8px; object-fit:contain;">
+          <div class="exp-year">Jul 2015 – Jul 2022</div>
+          <div class="exp-role">Associate Professor &amp; Head</div>
+          <div class="exp-org">Sahyadri College of Engineering &amp; Management · On-site</div>
+          <div class="exp-duration">7 yrs 1 mo</div>
+          <p class="exp-desc">Headed the department with academic and administrative oversight — curriculum architecture, research supervision, faculty development, and institutional accreditation processes (NBA/NAAC).</p>
+        </div>
+        <div class="exp-dot"><span></span></div>
+        <div class="exp-spacer"></div>
+      </div>
+
+      <!-- 4. Technical Consultant - MyStyle -->
+      <div class="exp-item reveal">
+        <div class="exp-spacer"></div>
+        <div class="exp-dot"><span></span></div>
+        <div class="exp-content glass-card">
+          <img src="images/mystyle-logo.png" alt="MyStyle Communications" class="exp-logo" style="border-radius:8px; object-fit:contain;">
+          <div class="exp-year">Sep 2020 – Apr 2021</div>
+          <div class="exp-role">Technical Consultant</div>
+          <div class="exp-org">MyStyle Communications · Freelance</div>
+          <div class="exp-duration">8 mos</div>
+          <p class="exp-desc">Advisory consultancy in technology communication and digital transformation initiatives.</p>
+        </div>
+      </div>
+
+      <!-- 5. Research Scholar - IIIT Allahabad -->
+      <div class="exp-item reveal">
+        <div class="exp-content glass-card">
+          <img src="images/iiita-logo.png" alt="IIIT Allahabad" class="exp-logo" style="border-radius:8px; object-fit:contain;">
+          <div class="exp-year">Jan 2013 – Jul 2015</div>
+          <div class="exp-role">Research Scholar</div>
+          <div class="exp-org">IIIT Allahabad</div>
+          <div class="exp-duration">2 yrs 7 mos</div>
+          <p class="exp-desc">Full-time doctoral research in Wireless Sensor Networks — published in IEEE conference proceedings and SCI/E-indexed journals; mentored M.Tech students in R&amp;D activities.</p>
+        </div>
+        <div class="exp-dot"><span></span></div>
+        <div class="exp-spacer"></div>
+      </div>
+
+      <!-- 6. Assistant Professor - Sahyadri -->
+      <div class="exp-item reveal">
+        <div class="exp-spacer"></div>
+        <div class="exp-dot"><span></span></div>
+        <div class="exp-content glass-card">
+          <img src="images/sahyadri-logo.png" alt="Sahyadri" class="exp-logo" style="border-radius:8px; object-fit:contain;">
+          <div class="exp-year">Aug 2008 – Jun 2010</div>
+          <div class="exp-role">Assistant Professor</div>
+          <div class="exp-org">Sahyadri College of Engineering &amp; Management · Full-time</div>
+          <div class="exp-duration">1 yr 11 mos</div>
+          <p class="exp-desc">Delivered content in C Programming, Unix System Programming, Graph Theory, Combinatorics, Data Structures, and Unix Shell/Perl. Developed curriculum and laboratory experiments.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [8] EDUCATION SECTION
+     ═══════════════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Academic Foundations</h2>
+    <div class="section-subtitle reveal">&nbsp;</div>
+
+    <div class="edu-cards">
+      <!-- PhD -->
+      <div class="edu-card glass-card reveal">
+        <img src="images/iiita-logo.png" alt="IIIT Allahabad" class="edu-logo" style="object-fit:contain;">
+        <div class="edu-degree">Doctor of Philosophy (PhD)</div>
+        <div class="edu-field">Information Technology</div>
+        <div class="edu-institution">Indian Institute of Information Technology, Allahabad</div>
+        <div class="edu-year">2013 – 2017</div>
+        <div class="edu-grade">Dissertation focus: Wireless Sensor Network Localization</div>
+        <p class="edu-quote">"A doctoral journey that forged the synthesis of mathematical graph theory and real-world network intelligence."</p>
+      </div>
+
+      <!-- M.Tech -->
+      <div class="edu-card glass-card reveal">
+        <img src="images/iiita-logo.png" alt="IIIT Allahabad" class="edu-logo" style="object-fit:contain;">
+        <div class="edu-degree">Master of Technology (M.Tech)</div>
+        <div class="edu-field">Information Technology</div>
+        <div class="edu-institution">Indian Institute of Information Technology, Allahabad</div>
+        <div class="edu-year">2011 – 2012</div>
+        <div class="edu-grade">Grade: First Class</div>
+        <p class="edu-quote">"Graduate-level specialization that deepened the theoretical substrate of networked computing systems."</p>
+      </div>
+
+      <!-- BE -->
+      <div class="edu-card glass-card reveal">
+        <img src="images/pa-college-logo.png" alt="PA College of Engineering" class="edu-logo" style="object-fit:contain;">
+        <div class="edu-degree">Bachelor of Engineering (BE)</div>
+        <div class="edu-field">Computer Science</div>
+        <div class="edu-institution">P A College of Engineering, Mangalore (VTU)</div>
+        <div class="edu-year">2004 – 2008</div>
+        <div class="edu-grade">Grade: First Class</div>
+        <p class="edu-quote">"The engineering foundation — logic, systems, and the beginning of a lifelong inquiry into how machines and minds connect."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [9] ACCOLADES & MILESTONES
+     ═══════════════════════════════════════ -->
+<section id="accolades">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Milestones at a Glance</h2>
+    <div class="section-subtitle reveal">&nbsp;</div>
+
+    <!-- Stats Ribbon -->
+    <div class="stats-ribbon reveal" id="statsRibbon">
+      <div class="stat-item">
+        <div class="stat-num" data-count="15">0</div>
+        <div class="stat-label">Years in Academia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="13">0</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="2">0</div>
+        <div class="stat-label">Authored Books</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="3">0</div>
+        <div class="stat-label">Institutions Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="1" data-suffix="" data-prefix="PhD">0</div>
+        <div class="stat-label">IIIT Allahabad</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="2000">0</div>
+        <div class="stat-label">Students Mentored</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [10] CONTRIBUTIONS & AFFILIATIONS
+     ═══════════════════════════════════════ -->
+<section id="contributions">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Service to the Academic Community</h2>
+    <div class="section-subtitle reveal">&nbsp;</div>
+
+    <div class="contributions-grid">
+      <div class="contributions-col reveal">
+        <h3>Editorial &amp; Review Roles</h3>
+        <ul>
+          <li>Reviewer: Wireless Personal Communications, Springer</li>
+        </ul>
+      </div>
+      <div class="contributions-col reveal">
+        <h3>Institutional Contributions</h3>
+        <ul>
+          <li>Dean Academics, Sahyadri COE&amp;M, Mangaluru
+            <span class="contrib-note">Current</span>
+          </li>
+          <li>Department Head, CSE/IT (2015–2022)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [11] CONTACT SECTION
+     ═══════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">Open to Collaboration</h2>
+    <p class="section-subtitle reveal">Whether in research, pedagogy, or institutional advancement — let us build something of lasting intellectual value.</p>
+
+    <div class="contact-cards">
+      <div class="contact-card glass-card reveal">
+        <span class="cc-icon">📧</span>
+        <div class="cc-label">Email</div>
+        <a class="cc-value" href="mailto:dean.academics@sahyadri.edu.in">dean.academics@sahyadri.edu.in</a>
+      </div>
+      <div class="contact-card glass-card reveal">
+        <span class="cc-icon">🔗</span>
+        <div class="cc-label">LinkedIn</div>
+        <a class="cc-value" href="https://linkedin.com/in/shamanth-rai" target="_blank" rel="noopener">linkedin.com/in/shamanth-rai</a>
+      </div>
+      <div class="contact-card glass-card reveal">
+        <span class="cc-icon">🆔</span>
+        <div class="cc-label">ORCID</div>
+        <a class="cc-value" href="https://orcid.org/0000-0001-5824-361X" target="_blank" rel="noopener">0000-0001-5824-361X</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     [12] FOOTER
+     ═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-main">Dr. Shamantha Rai · Dean Academics · Sahyadri College of Engineering &amp; Management, Mangaluru</p>
+    <div class="footer-links">
+      <a href="https://orcid.org/0000-0001-5824-361X" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://linkedin.com/in/shamanth-rai" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="footer-copy">© 2026 · Built with scholarly intent</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ─────────────────────────────────
+  // GSAP & ScrollTrigger Registration
+  // ─────────────────────────────────
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ─────────────────────────────────
+  // INTRO ANIMATION
+  // ─────────────────────────────────
+  const introOverlay = document.getElementById('introOverlay');
+  const introNameEl = document.getElementById('introName');
+  const nameText = 'Dr. Shamantha Rai';
+  
+  nameText.split('').forEach(char => {
+    const span = document.createElement('span');
+    span.classList.add('intro-letter');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    introNameEl.appendChild(span);
+  });
+
+  const introLetters = introNameEl.querySelectorAll('.intro-letter');
+  const introTl = gsap.timeline({
+    onComplete: () => {
+      gsap.to(introOverlay, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+        onComplete: () => {
+          introOverlay.style.display = 'none';
+          initPageAnimations();
+        }
+      });
+    }
+  });
+
+  introTl.to(introLetters, {
+    opacity: 1,
+    filter: 'blur(0px)',
+    duration: 0.6,
+    stagger: 0.04,
+    ease: 'power2.out',
+    delay: 0.2
+  });
+  introTl.to({}, { duration: 0.3 });
+
+  // ─────────────────────────────────
+  // CUSTOM CURSOR
+  // ─────────────────────────────────
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorRing = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover effect on interactive elements
+    const hoverables = document.querySelectorAll('a, button, .glass-card, input, textarea, select, .constellation-node');
+    hoverables.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('hovering');
+        cursorRing.classList.add('hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('hovering');
+        cursorRing.classList.remove('hovering');
+      });
+    });
+  } else {
+    cursorDot.style.display = 'none';
+    cursorRing.style.display = 'none';
+  }
+
+  // ─────────────────────────────────
+  // NAVIGATION
+  // ─────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const navLinksAll = document.querySelectorAll('.navbar-links a:not(.orcid-badge)');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    updateActiveNav();
+  });
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  function updateActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 120;
+      if (window.scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinksAll.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+
+  // ─────────────────────────────────
+  // HERO BACKGROUND CANVAS
+  // ─────────────────────────────────
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let nodes = [];
+  const NODE_COUNT = 40;
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  for (let i = 0; i < NODE_COUNT; i++) {
+    nodes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 2 + 1
+    });
+  }
+
+  function drawNetwork() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(201, 168, 76, ${0.15 * (1 - dist / 150)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    // Nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(201, 168, 76, 0.4)';
+      ctx.fill();
+      // Move
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+    });
+    requestAnimationFrame(drawNetwork);
+  }
+  drawNetwork();
+
+  // Parallax on hero
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      canvas.style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
+  });
+
+  // ─────────────────────────────────
+  // CONSTELLATION SVG (Research Section)
+  // ─────────────────────────────────
+  const svg = document.getElementById('constellationSvg');
+  const domains = [
+    { label: 'Wireless Sensor\nNetworks', x: 140, y: 120, desc: 'Localization, deployment, energy optimization' },
+    { label: 'AI & NLP', x: 520, y: 80, desc: 'Machine learning, text analytics, neural networks' },
+    { label: 'Stochastic\nMathematics', x: 100, y: 340, desc: 'Probability theory, random processes, Markov chains' },
+    { label: 'Control Theory\n& AGI', x: 560, y: 300, desc: 'Hamilton-Jacobi-Bellman, autonomous agents' },
+    { label: 'Information\nTechnology', x: 220, y: 460, desc: 'Systems architecture, network protocols' },
+    { label: 'Agile Project\nManagement', x: 500, y: 440, desc: 'Scrum, Kanban, enterprise program governance' },
+    { label: 'Curriculum Design\n& Pedagogy', x: 60, y: 220, desc: 'OBE frameworks, assessment design, faculty development' },
+    { label: 'Organizational\nLeadership', x: 620, y: 190, desc: 'Institutional strategy, accreditation, governance' }
+  ];
+  const center = { x: 350, y: 262 };
+
+  // Draw lines
+  domains.forEach((d, i) => {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', center.x);
+    line.setAttribute('y1', center.y);
+    line.setAttribute('x2', d.x);
+    line.setAttribute('y2', d.y);
+    line.setAttribute('stroke', 'rgba(201,168,76,0.2)');
+    line.setAttribute('stroke-width', '1');
+    line.setAttribute('stroke-dasharray', '4 4');
+    line.classList.add('constellation-line');
+    const length = Math.sqrt((d.x - center.x) ** 2 + (d.y - center.y) ** 2);
+    line.setAttribute('stroke-dashoffset', length);
+    line.dataset.length = length;
+    svg.appendChild(line);
+  });
+
+  // Center node
+  const cGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  cGroup.classList.add('constellation-node');
+  const cCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  cCircle.setAttribute('cx', center.x);
+  cCircle.setAttribute('cy', center.y);
+  cCircle.setAttribute('r', '28');
+  cCircle.setAttribute('fill', 'rgba(201,168,76,0.15)');
+  cCircle.setAttribute('stroke', '#C9A84C');
+  cCircle.setAttribute('stroke-width', '1.5');
+  cGroup.appendChild(cCircle);
+  const cText1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  cText1.setAttribute('x', center.x);
+  cText1.setAttribute('y', center.y - 4);
+  cText1.setAttribute('text-anchor', 'middle');
+  cText1.setAttribute('font-size', '9');
+  cText1.setAttribute('fill', '#C9A84C');
+  cText1.setAttribute('font-family', 'Inter, sans-serif');
+  cText1.setAttribute('font-weight', '600');
+  cText1.textContent = 'Dr. Shamantha';
+  cGroup.appendChild(cText1);
+  const cText2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  cText2.setAttribute('x', center.x);
+  cText2.setAttribute('y', center.y + 10);
+  cText2.setAttribute('text-anchor', 'middle');
+  cText2.setAttribute('font-size', '9');
+  cText2.setAttribute('fill', '#C9A84C');
+  cText2.setAttribute('font-family', 'Inter, sans-serif');
+  cText2.setAttribute('font-weight', '600');
+  cText2.textContent = 'Rai';
+  cGroup.appendChild(cText2);
+  svg.appendChild(cGroup);
+
+  // Domain nodes
+  domains.forEach(d => {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.classList.add('constellation-node');
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', d.x);
+    circle.setAttribute('cy', d.y);
+    circle.setAttribute('r', '18');
+    circle.setAttribute('fill', 'rgba(107,127,163,0.1)');
+    circle.setAttribute('stroke', 'rgba(107,127,163,0.4)');
+    circle.setAttribute('stroke-width', '1');
+    g.appendChild(circle);
+
+    const lines = d.label.split('\n');
+    lines.forEach((line, i) => {
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', d.x);
+      text.setAttribute('y', d.y + 32 + (i * 14));
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('font-size', '11');
+      text.textContent = line;
+      g.appendChild(text);
+    });
+
+    // Tooltip on hover
+    const tooltip = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    tooltip.setAttribute('x', d.x);
+    tooltip.setAttribute('y', d.y + 32 + (lines.length * 14) + 4);
+    tooltip.setAttribute('text-anchor', 'middle');
+    tooltip.setAttribute('font-size', '9');
+    tooltip.setAttribute('fill', 'rgba(245,240,232,0.5)');
+    tooltip.setAttribute('font-family', 'Inter, sans-serif');
+    tooltip.setAttribute('opacity', '0');
+    tooltip.textContent = d.desc;
+    g.appendChild(tooltip);
+
+    g.addEventListener('mouseenter', () => {
+      gsap.to(circle, { attr: { r: 22, fill: 'rgba(201,168,76,0.15)' }, duration: 0.3 });
+      gsap.to(tooltip, { opacity: 1, duration: 0.3 });
+    });
+    g.addEventListener('mouseleave', () => {
+      gsap.to(circle, { attr: { r: 18, fill: 'rgba(107,127,163,0.1)' }, duration: 0.3 });
+      gsap.to(tooltip, { opacity: 0, duration: 0.3 });
+    });
+
+    svg.appendChild(g);
+  });
+
+  // ─────────────────────────────────
+  // PAGE ANIMATIONS (after intro)
+  // ─────────────────────────────────
+  function initPageAnimations() {
+    // Hero name letter split
+    const heroName = document.getElementById('heroName');
+    const heroText = heroName.textContent;
+    heroName.innerHTML = '';
+    heroText.split('').forEach(char => {
+      const span = document.createElement('span');
+      span.classList.add('letter');
+      span.textContent = char === ' ' ? '\u00A0' : char;
+      heroName.appendChild(span);
+    });
+    gsap.to('#heroName .letter', {
+      opacity: 1,
+      duration: 0.4,
+      stagger: 0.03,
+      ease: 'power2.out',
+      delay: 0.1
+    });
+
+    // Hero reveals
+    gsap.to('.hero .reveal', {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.12,
+      ease: 'power2.out',
+      delay: 0.5
+    });
+
+    // Hero badge count-up
+    document.querySelectorAll('.hero-badge .badge-num').forEach(el => {
+      const count = parseInt(el.dataset.count);
+      if (isNaN(count)) return;
+      gsap.to(el, {
+        innerText: count,
+        duration: 1.5,
+        snap: { innerText: 1 },
+        ease: 'power2.out',
+        delay: 0.8
+      });
+    });
+
+    // Section dividers
+    document.querySelectorAll('.section-divider').forEach(divider => {
+      ScrollTrigger.create({
+        trigger: divider,
+        start: 'top 85%',
+        onEnter: () => {
+          gsap.to(divider, { scaleX: 1, duration: 0.6, ease: 'power2.out' });
+        },
+        once: true
+      });
+    });
+
+    // Reveal animations
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.closest('.hero')) return; // Already handled
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        onEnter: () => {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out'
+          });
+        },
+        once: true
+      });
+    });
+
+    // Constellation lines animation
+    document.querySelectorAll('.constellation-line').forEach(line => {
+      ScrollTrigger.create({
+        trigger: '#research',
+        start: 'top 70%',
+        onEnter: () => {
+          gsap.to(line, {
+            strokeDashoffset: 0,
+            duration: 1.2,
+            ease: 'power2.out',
+            delay: Math.random() * 0.4
+          });
+        },
+        once: true
+      });
+    });
+
+    // Stats count-up
+    const statsRibbon = document.getElementById('statsRibbon');
+    let statsAnimated = false;
+    ScrollTrigger.create({
+      trigger: statsRibbon,
+      start: 'top 85%',
+      onEnter: () => {
+        if (statsAnimated) return;
+        statsAnimated = true;
+        statsRibbon.querySelectorAll('.stat-num').forEach(el => {
+          const count = parseInt(el.dataset.count);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix;
+          if (prefix === 'PhD') {
+            el.textContent = 'PhD';
+            return;
+          }
+          gsap.to(el, {
+            innerText: count,
+            duration: 2,
+            snap: { innerText: 1 },
+            ease: 'power2.out',
+            onUpdate: function() {
+              const v = Math.round(parseFloat(el.innerText));
+              el.textContent = v + (count >= 10 ? '+' : '');
+            },
+            onComplete: function() {
+              el.textContent = count + (count >= 10 ? '+' : '');
+            }
+          });
+        });
+      },
+      once: true
+    });
+  }
+
+  // ─────────────────────────────────
+  // LUCIDE ICONS
+  // ─────────────────────────────────
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+});
+</script>
+</body>
+</html>
